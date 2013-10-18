@@ -95,8 +95,6 @@ add_action( 'admin_enqueue_scripts', 'issuer_add_admin_scripts' );
 function issuer_edit_head($defaults) {  
     $defaults['current']  = 'Current';  
     $defaults['issuer-hide']  = 'Hide';  
-  
-  
     return $defaults;  
 }  
 
@@ -123,6 +121,7 @@ function issuer_make_endpoint() {
   // register a JSON endpoint for the root
   add_rewrite_endpoint("issuer", EP_ROOT);
 }
+
 add_action("init", "issuer_make_endpoint");
 function issuer_add_queryvars( $query_vars ) {  
     $query_vars[] = 'issuer';  
@@ -270,3 +269,85 @@ function issuer_deendpoints_activate() {
   $wp_rewrite -> flush_rules();
 }
 register_deactivation_hook( __FILE__, 'issuer_deendpoints_activate' );
+  
+// custom fields for special gazelle issues
+// inspired by http://sabramedia.com/blog/how-to-add-custom-fields-to-custom-taxonomies
+
+function issuer_taxonomy_custom_fields($tag) {
+  $t_id = $tag->term_id;
+  $term_meta = get_option( "taxonomy_term_$t_id" );
+?>
+<tr class="form-field">  
+    <th scope="row" valign="top">  
+        <label for="background">Background Texture URL</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[background]" id="term_meta[background]" size="25" style="width:60%;" value="<?php echo $term_meta['background'] ? $term_meta['background'] : ''; ?>"><br />  
+        <span class="description">The url for a background texture for the logo / navbar / issue screen</span>  
+    </td>  
+</tr>  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
+        <label for="banner">Banner URL</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[banner]" id="term_meta[banner]" size="25" style="width:60%;" value="<?php echo $term_meta['banner'] ? $term_meta['banner'] : ''; ?>"><br />  
+        <span class="description">The url for a banner image for desktop</span>  
+    </td>  
+</tr>  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
+        <label for="banner_mobile">Mobile Banner URL</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[banner_mobile]" id="term_meta[banner_mobile]" size="25" style="width:60%;" value="<?php echo $term_meta['banner_mobile'] ? $term_meta['banner_mobile'] : ''; ?>"><br />  
+        <span class="description">The url for a banner image for mobile</span>  
+    </td>  
+</tr>  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
+        <label for="editor_style">Editor's Pick Style</label>  
+    </th>  
+    <td>  
+      <div class="radio">
+        <label>
+          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][default]" value="default" style="width:20%;" <?php echo $term_meta['editor_style'] == 'default' || $term_meta['editor_style'] == '' ? 'checked' : ''; ?>>
+          Default
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][six_boxes]" value="six_boxes" style="width:20%;" <?php echo $term_meta['editor_style'] == 'six_boxes' ? 'checked' : ''; ?>>
+          Six Boxes
+        </label>
+      </div>
+      <span class="description">The presentation style for the editor's picks</span>  
+    </td>  
+</tr>  
+
+<?php
+}
+
+// A callback function to save our extra taxonomy field(s)  
+function save_issuer_custom_fields( $term_id ) {  
+    if ( isset( $_POST['term_meta'] ) ) {  
+        $t_id = $term_id;  
+        $term_meta = get_option( "taxonomy_term_$t_id" );  
+        $cat_keys = array_keys( $_POST['term_meta'] );  
+            foreach ( $cat_keys as $key ){  
+            if ( isset( $_POST['term_meta'][$key] ) ){  
+                $term_meta[$key] = $_POST['term_meta'][$key];  
+            }  
+        }  
+        //save the option array  
+        update_option( "taxonomy_term_$t_id", $term_meta );  
+    }  
+} 
+
+// Add the fields to the "issue" taxonomy, using our callback function  
+add_action( 'issue_edit_form_fields', 'issuer_taxonomy_custom_fields', 10, 2 );  
+  
+// Save the changes made on the "issue" taxonomy, using our callback function  
+add_action( 'edited_issue', 'save_issuer_custom_fields', 10, 2 );
+add_action( 'created_issue', 'save_issuer_custom_fields', 10, 2 );
+
