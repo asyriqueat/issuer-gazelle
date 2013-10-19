@@ -279,11 +279,20 @@ function issuer_taxonomy_custom_fields($tag) {
 ?>
 <tr class="form-field">  
     <th scope="row" valign="top">  
+        <label for="logo">Logo URL</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[logo]" id="term_meta[logo]" size="25" style="width:60%;" value="<?php echo $term_meta['logo'] ? $term_meta['logo'] : ''; ?>"><br />  
+        <span class="description">The url for the special gazelle logo in the header (293 x 363 pixels). Modify the original logo only.</span>  
+    </td>  
+</tr>  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
         <label for="background">Background Texture URL</label>  
     </th>  
     <td>  
         <input type="text" name="term_meta[background]" id="term_meta[background]" size="25" style="width:60%;" value="<?php echo $term_meta['background'] ? $term_meta['background'] : ''; ?>"><br />  
-        <span class="description">The url for a background texture for the logo / navbar / issue screen</span>  
+        <span class="description">The url for a background texture for the navbar / issue screen.</span>  
     </td>  
 </tr>  
 <tr class="form-field">  
@@ -292,7 +301,7 @@ function issuer_taxonomy_custom_fields($tag) {
     </th>  
     <td>  
         <input type="text" name="term_meta[banner]" id="term_meta[banner]" size="25" style="width:60%;" value="<?php echo $term_meta['banner'] ? $term_meta['banner'] : ''; ?>"><br />  
-        <span class="description">The url for a banner image for desktop</span>  
+        <span class="description">The url for a banner image for desktop.</span>  
     </td>  
 </tr>  
 <tr class="form-field">  
@@ -301,7 +310,7 @@ function issuer_taxonomy_custom_fields($tag) {
     </th>  
     <td>  
         <input type="text" name="term_meta[banner_mobile]" id="term_meta[banner_mobile]" size="25" style="width:60%;" value="<?php echo $term_meta['banner_mobile'] ? $term_meta['banner_mobile'] : ''; ?>"><br />  
-        <span class="description">The url for a banner image for mobile</span>  
+        <span class="description">The url for a banner image for mobile.</span>  
     </td>  
 </tr>  
 <tr class="form-field">  
@@ -321,7 +330,7 @@ function issuer_taxonomy_custom_fields($tag) {
           Six Boxes
         </label>
       </div>
-      <span class="description">The presentation style for the editor's picks</span>  
+      <span class="description">The presentation style for the editor's picks.</span>  
     </td>  
 </tr>  
 
