@@ -300,7 +300,7 @@ function issuer_taxonomy_custom_fields($tag) {
         <label for="banner">Video URL</label>  
     </th>  
     <td>  
-        <input type="text" name="term_meta[banner]" id="term_meta[banner]" size="25" style="width:60%;" value="<?php echo $term_meta['banner'] ? $term_meta['banner'] : ''; ?>"><br />  
+        <input type="text" name="term_meta[video]" id="term_meta[video]" size="25" style="width:60%;" value="<?php echo $term_meta['video'] ? $term_meta['video'] : ''; ?>"><br />  
         <span class="description">The video to play on desktop browsers. Displays banner if not available.</span>  
     </td>  
 </tr>  
