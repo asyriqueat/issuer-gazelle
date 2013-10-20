@@ -297,11 +297,20 @@ function issuer_taxonomy_custom_fields($tag) {
 </tr>  
 <tr class="form-field">  
     <th scope="row" valign="top">  
+        <label for="banner">Video URL</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[banner]" id="term_meta[banner]" size="25" style="width:60%;" value="<?php echo $term_meta['banner'] ? $term_meta['banner'] : ''; ?>"><br />  
+        <span class="description">The video to play on desktop browsers. Displays banner if not available.</span>  
+    </td>  
+</tr>  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
         <label for="banner">Banner URL</label>  
     </th>  
     <td>  
         <input type="text" name="term_meta[banner]" id="term_meta[banner]" size="25" style="width:60%;" value="<?php echo $term_meta['banner'] ? $term_meta['banner'] : ''; ?>"><br />  
-        <span class="description">The url for a banner image for desktop.</span>  
+        <span class="description">The url for a banner image for large browsers that aren't desktops (tablets).</span>  
     </td>  
 </tr>  
 <tr class="form-field">  
