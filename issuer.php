@@ -306,6 +306,15 @@ function issuer_taxonomy_custom_fields($tag) {
 </tr>  
 <tr class="form-field">  
     <th scope="row" valign="top">  
+        <label for="banner">OGG URL</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[video_ogg]" id="term_meta[video_ogg]" size="25" style="width:60%;" value="<?php echo $term_meta['video_ogg'] ? $term_meta['video_ogg'] : ''; ?>"><br />  
+        <span class="description">The OGG Url for firefox support</span>  
+    </td>  
+</tr>  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
         <label for="banner">Banner URL</label>  
     </th>  
     <td>  
