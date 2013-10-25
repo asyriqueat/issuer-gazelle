@@ -297,20 +297,39 @@ function issuer_taxonomy_custom_fields($tag) {
 </tr>  
 <tr class="form-field">  
     <th scope="row" valign="top">  
+      Banner Properties
+    </th>  
+    <td>
+      <span class="description">
+        The following fields are all optional and in order of priority precedence. Generally fields listed higher up take priority over the lower fields. You do not have to fill in every one.
+        Not filling in any will remove the banner entirely.</span>
+    </td>
+</tr>  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
+        <label for="banner">Youtube URL</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[youtube]" id="term_meta[youtube]" size="25" style="width:60%;" value="<?php echo $term_meta['youtube'] ? $term_meta['youtube'] : ''; ?>"><br />  
+        <span class="description">The youtube to embed on all browsers.</span>  
+    </td>  
+</tr>
+<tr>
+    <th scope="row" valign="top">  
         <label for="banner">Video URL</label>  
     </th>  
     <td>  
         <input type="text" name="term_meta[video]" id="term_meta[video]" size="25" style="width:60%;" value="<?php echo $term_meta['video'] ? $term_meta['video'] : ''; ?>"><br />  
-        <span class="description">The video to play on desktop browsers. Displays banner if not available.</span>  
+        <span class="description">The video to play on desktop browsers. Displays mobile_banner on the mobile versions.</span>  
     </td>  
 </tr>  
 <tr class="form-field">  
     <th scope="row" valign="top">  
-        <label for="banner">OGG URL</label>  
+        <label for="banner">OGG (fallback video) URL</label>  
     </th>  
     <td>  
         <input type="text" name="term_meta[video_ogg]" id="term_meta[video_ogg]" size="25" style="width:60%;" value="<?php echo $term_meta['video_ogg'] ? $term_meta['video_ogg'] : ''; ?>"><br />  
-        <span class="description">The OGG Url for firefox support</span>  
+        <span class="description">The fallback video OGG Url for firefox support.</span>  
     </td>  
 </tr>  
 <tr class="form-field">  
@@ -339,13 +358,19 @@ function issuer_taxonomy_custom_fields($tag) {
       <div class="radio">
         <label>
           <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][default]" value="default" style="width:20%;" <?php echo $term_meta['editor_style'] == 'default' || $term_meta['editor_style'] == '' ? 'checked' : ''; ?>>
-          Default
+          Default (Default carousel + top articles)
         </label>
       </div>
       <div class="radio">
         <label>
           <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][six_boxes]" value="six_boxes" style="width:20%;" <?php echo $term_meta['editor_style'] == 'six_boxes' ? 'checked' : ''; ?>>
-          Six Boxes
+          Six Boxes (No carousel or top articles followed by six boxes)
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][small_banner]" value="small_banner" style="width:20%;" <?php echo $term_meta['editor_style'] == 'small_banner' ? 'checked' : ''; ?>>
+          Small Banner (Carousel replaced with the banner followed by three boxes)
         </label>
       </div>
       <span class="description">The presentation style for the editor's picks.</span>  
