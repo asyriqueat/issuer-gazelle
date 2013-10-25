@@ -307,6 +307,15 @@ function issuer_taxonomy_custom_fields($tag) {
 </tr>  
 <tr class="form-field">  
     <th scope="row" valign="top">  
+        <label for="banner">Banner Link</label>  
+    </th>  
+    <td>  
+        <input type="text" name="term_meta[banner_link]" id="term_meta[banner_link]" size="25" style="width:60%;" value="<?php echo $term_meta['banner_link'] ? $term_meta['banner_link'] : ''; ?>"><br />  
+        <span class="description">Where clicking the banner leads the user.</span>  
+    </td>  
+</tr>
+<tr class="form-field">  
+    <th scope="row" valign="top">  
         <label for="banner">Youtube URL</label>  
     </th>  
     <td>  
