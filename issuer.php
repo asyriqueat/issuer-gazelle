@@ -366,19 +366,19 @@ function issuer_taxonomy_custom_fields($tag) {
     <td>
       <div class="radio">
         <label>
-          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][default]" value="default" style="width:20px;" <?php echo $term_meta['editor_style'] == 'default' || $term_meta['editor_style'] == '' ? 'checked' : ''; ?>>
+          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][default]" value="default" style="width:2px;" <?php echo $term_meta['editor_style'] == 'default' || $term_meta['editor_style'] == '' ? 'checked' : ''; ?>>
           Default (Default carousel + top articles)
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][six_boxes]" value="six_boxes" style="width:20px;" <?php echo $term_meta['editor_style'] == 'six_boxes' ? 'checked' : ''; ?>>
+          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][six_boxes]" value="six_boxes" style="width:2px;" <?php echo $term_meta['editor_style'] == 'six_boxes' ? 'checked' : ''; ?>>
           Six Boxes (No carousel or top articles followed by six boxes)
         </label>
       </div>
       <div class="radio">
         <label>
-          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][small_banner]" value="small_banner" style="width:20px;" <?php echo $term_meta['editor_style'] == 'small_banner' ? 'checked' : ''; ?>>
+          <input type="radio" name="term_meta[editor_style]" id="term_meta[editor_style][small_banner]" value="small_banner" style="width:2px;" <?php echo $term_meta['editor_style'] == 'small_banner' ? 'checked' : ''; ?>>
           Small Banner (Carousel replaced with the banner followed by three boxes)
         </label>
       </div>
